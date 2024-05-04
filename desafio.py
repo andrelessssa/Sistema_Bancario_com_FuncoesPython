@@ -69,10 +69,10 @@ def criar_usuario(usuarios):
     print("=== Usuario cadastrado com sucesso! ===")
 
 def filtrar_usuario(cpf, usuarios):
-    usuarios_filtrados = [usuario for usuario in usuarios["cpf"] == cpf]
+    usuarios_filtrados = [usuario for usuario in usuarios if usuario["cpf"] == cpf]
     return usuarios_filtrados[0] if usuarios_filtrados else None
 
-def criar_conta(agencia, numero_conta, usuarios):
+def criar_conta(agencia, numero_conta, usuarios): #dicionario
     cpf = input("Informe o CPF do usuário: ")
     usuario = filtrar_usuario(cpf, usuarios)
 
@@ -102,6 +102,7 @@ def main():
     numero_saques = 0
     usuarios = []
     contas = []
+   
 
     while  True:
         opcao = menu()
@@ -135,6 +136,9 @@ def main():
 
             if conta:
                 contas.append(conta)
+        elif opcao == "lc":
+            listar_contas(contas)        
+              
         elif opcao =="q":
             break 
 
